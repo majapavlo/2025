@@ -190,7 +190,7 @@ There are more of such pathologies <d-cite key="nixon2019measuring"></d-cite>. T
 
 ### Binning Approach
 
-One of the most frequently mentioned issues with ECE is its sensitivity to the change in binning <d-cite key="kumar2018trainable, nixon2019measuring, gupta2020calibration, zhang2020mix, roelofs2022mitigating"></d-cite>. 
+One of the most frequently mentioned issues with ECE is its sensitivity to the change in binning <d-cite key="kumar2018trainable, nixon2019measuring, gupta2020calibration, zhang2020mix, roelofs2022mitigating, famiglini2023towards"></d-cite>. 
 This is sometimes referred to as the __*Bias-Variance trade-off*__ <d-cite key="nixon2019measuring, zhang2020mix"></d-cite>: 
 Fewer bins reduce variance but increase bias, while more bins lead to sparsely populated bins increasing variance. 
 If we look back to our ECE example with 9 samples and change the bins from 5 to 10 here too, 
@@ -303,11 +303,11 @@ Class-wise calibration is a __*weaker*__ definition than __multi-class__ calibra
 </div>
 
 To evaluate such different notions of calibration, 
-some updates are made to ECE to calculate a class-wise error. One idea is to calculate the ECE for each class and then take the average <d-cite key="nixon2019measuring, kull2019beyond"></d-cite>. 
+some updates are made to ECE to calculate a class-wise error. One idea is to calculate the ECE for each class and then take the average <d-cite key="nixon2019measuring, kull2019beyond"></d-cite>. Another idea is to swap the L1-distance used in ECE with the L2 and use several ECE metrics to more effectively assess the overall level of calibration <d-cite key="famiglini2023towards"></d-cite>. 
 Others, introduce the use of the KS-test for class-wise calibration <d-cite key="gupta2020calibration"></d-cite> and <d-cite key="vaicenavicius2019evaluating"></d-cite> also 
 suggest using statistical hypothesis tests instead of ECE based approaches.
 <!-- by separately binning predictions for each class probability and then calculating the error and averaging across bins -->
-And other researchers develop a hypothesis test framework \[TCal\] to detect whether a model is significantly mis-calibrated <d-cite key="donghwan2023tcal"></d-cite> and others build on this by developing confidence intervals for the L2 ECE <d-cite key="sun2024confidenceintervalell2expected"></d-cite> .
+And other researchers develop a hypothesis test framework \[TCal\] to detect whether a model is significantly mis-calibrated <d-cite key="donghwan2023tcal"></d-cite> and <d-cite key="sun2024confidenceintervalell2expected"></d-cite> build on this by developing confidence intervals for the L2-ECE.
 
 All the approaches mentioned above __share a key assumption: ground-truth labels are available__. Within this gold-standard mindset a prediction is either true or false. However, annotators  might unresolvably and justifiably disagree on the real label <d-cite key="aroyo2015truth, uma2021learning"></d-cite>. Let's look at a simple example below:
 
